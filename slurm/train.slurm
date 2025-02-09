@@ -3,14 +3,15 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --exclusive
 #SBATCH --gres=gpu:8
-#SBATCH --partition=hopper-prod  # Adjust this for your cluster
+#SBATCH --partition=berzelius*  # hopper-prod  # Adjust this for your cluster
 #SBATCH --output=./logs/%x-%j.out
 #SBATCH --err=./logs/%x-%j.err
 #SBATCH --requeue
 
 # Specific configuration optimized for the Hugging Face Compute Cluster
 # Be ye warned this may not work on other clusters!
-module load cuda/12.4
+# module load cuda/12.4
+module load buildenv-gcccuda/12.1.1-gcc12.3.0
 
 
 set -x -e
